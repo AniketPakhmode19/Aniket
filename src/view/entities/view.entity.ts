@@ -27,20 +27,20 @@ export class UserDetailView {
   @ViewColumn()
   id: number;
 
-  @ViewColumn()
-  login_id: string;
+  @ViewColumn({name:'login_id'})
+  loginId: string;
 
-  @ViewColumn()
-  user_pass: string;
+  @ViewColumn({name:'user_pass'})
+  userPassword: string;
 
-  @ViewColumn()
-  first_name: string;
+  @ViewColumn({name:'first_name'})
+  firstName: string;
 
-  @ViewColumn()
-  last_name: string;
+  @ViewColumn({name:'last_name'})
+  lastName: string;
 
-  @ViewColumn()
-  role_name: string;
+  @ViewColumn({name:'role_name'})
+  roleName: string;
 
   @ViewColumn()
   dob: Date;
@@ -51,9 +51,9 @@ export class UserDetailView {
   @ViewColumn()
   gender: string;
 
-  @ViewColumn()
-  isactive: number;
+  @ViewColumn({name:'isactive'})
+  isActive: number;
 
-  @ViewColumn()
-  user_changepass: boolean;
+  @ViewColumn({name:'user_changepass'})
+  userChangePassword: number;
 }

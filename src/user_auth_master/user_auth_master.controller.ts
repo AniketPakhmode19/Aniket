@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete, Put } from '@nestjs/common';
 import { UserAuthMasterService } from './user_auth_master.service';
 import { CreateUserAuthMasterDto } from './dto/create-user_auth_master.dto';
 import { UpdateUserAuthMasterDto } from './dto/update-user_auth_master.dto';
@@ -23,7 +23,7 @@ export class UserAuthMasterController {
     return this.userAuthMasterService.create(createUserAuthMasterDto);
   }
 
-  @Patch(':id')
+  @Put(':id')
   update(@Param('id') id: number, @Body() updateUserAuthMasterDto: UpdateUserAuthMasterDto) {
     return this.userAuthMasterService.update(+id, updateUserAuthMasterDto);
   }

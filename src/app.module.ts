@@ -8,7 +8,7 @@ import { UserAuthMasterModule } from './user_auth_master/user_auth_master.module
 import { UserRolesMaster } from './user_roles_master/entities/user_roles_master.entity';
 import { UserDetailsMaster } from './user_details_master/entities/user_details_master.entity';
 import { UserAuthMaster } from './user_auth_master/entities/user_auth_master.entity';
-import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core';
+import { APP_FILTER } from '@nestjs/core';
 import { AllExceptionsFilter } from './exceptions/all-exceptions.filter';
 import { ViewModule } from './view/view.module';
 import { UserDetailView } from './view/entities/view.entity';

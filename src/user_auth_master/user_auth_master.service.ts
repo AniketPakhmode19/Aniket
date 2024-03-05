@@ -49,7 +49,7 @@ export class UserAuthMasterService {
       const hashPassword = await bcrypt.hash(createUserAuthMasterDto.user_password, this.saltOrRounds);
       const newUserAuthData = {
         ...createUserAuthMasterDto,
-        user_password: hashPassword,
+        userPassword: hashPassword,
       };
       return this.userAuthRepository.save(newUserAuthData);
     }

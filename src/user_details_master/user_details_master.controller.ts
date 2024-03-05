@@ -1,8 +1,8 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, UseInterceptors } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete, Put, UseInterceptors } from '@nestjs/common';
 import { UserDetailsMasterService } from './user_details_master.service';
 import { CreateUserDetailsMasterDto } from './dto/create-user_details_master.dto';
 import { UpdateUserDetailsMasterDto } from './dto/update-user_details_master.dto';
-import { DetailsInterceptor } from 'src/interceptor/details.interceptor';
+
 
 @Controller('userdetail')
 export class UserDetailsMasterController {
@@ -24,7 +24,7 @@ export class UserDetailsMasterController {
     return this.userDetailsMasterService.create(createUserDetailsMasterDto);
   }
 
-  @Patch(':id')
+  @Put(':id')
   update(@Param('id') id: string, @Body() updateUserDetailsMasterDto: UpdateUserDetailsMasterDto) {
     return this.userDetailsMasterService.update(+id, updateUserDetailsMasterDto);
   }

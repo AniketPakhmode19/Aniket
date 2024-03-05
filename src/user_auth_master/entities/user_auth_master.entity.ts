@@ -10,17 +10,17 @@ import { UserDetailsMaster } from 'src/user_details_master/entities/user_details
   @JoinColumn({name:'id'})
   UserDetailsMaster: UserDetailsMaster;
 
-  @Column({ nullable: false })
-  user_password: string;
+  @Column({ nullable: false, name:'user_password' })
+  userPassword: string;
 
-  @Column({ nullable: false })
-  user_changepass: number;
+  @Column({ nullable: false, name:'user_changepass' })
+  userChangePassword: number;
 
-  @Column({ default: () => "CURRENT_TIMESTAMP" })
-  crtdate: Date;
+  @Column({ default: () => "CURRENT_TIMESTAMP" , name:'crtdate'})
+  crtDate: Date;
 
-  @Column({ default: () => "CURRENT_TIMESTAMP" })
-  upddate: Date;
+  @Column({ default: () => "CURRENT_TIMESTAMP",name:'upddate' })
+  updDate: Date;
 
 
   

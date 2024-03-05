@@ -9,16 +9,17 @@ export class DetailsInterceptor implements NestInterceptor {
     return next.handle().pipe(
       map((data) => {
         return data.map((userData: UserDetailView) => {
-          let isActiveString: string = '';
-          if (userData.isactive === 1) {
-            isActiveString = 'Yes';
-          } else if (userData.isactive === 0) {
-            isActiveString = 'No';
+          let isActives: string = '';
+          if (userData.isActive === 1) {
+            isActives = 'false';
+          } else if (userData.isActive === 0) {
+            isActives = 'true';
           }
           const res = {
             ...userData,
-            isactive: isActiveString
+            isActives
           };
+          delete res.isActive;
           return res;
         });
       })

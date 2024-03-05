@@ -6,11 +6,11 @@ export class UserRolesMaster {
   @PrimaryGeneratedColumn()
   id: number;
  
-  @Column({ nullable: false })
-  role_name: string;
+  @Column({ nullable: false, name:'role_name' })
+  roleName: string;
  
-  @Column({ nullable: false })
-  role_description: string;
+  @Column({ nullable: false, name:'role_description' })
+  roleDescription: string;
  
   @Column()
   crtupddate: String;
