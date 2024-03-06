@@ -1,16 +1,17 @@
-import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { IsInt, IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
 export class CreateUserAuthMasterDto {
+
+  @IsNotEmpty()
+  @IsInt()
+  id: number;
   
   @IsNotEmpty()
   @IsString()
-  readonly user_password: string;
+  userPassword: string;
 
   @IsNotEmpty()
-  @IsNumber()
-  readonly user_changepass: number;
+  @IsInt()
+  userChangePassword: number;
 
-  readonly crtdate?: Date;
-  
-  readonly upddate?: Date;
 }

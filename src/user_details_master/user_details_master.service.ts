@@ -4,6 +4,8 @@ import { UpdateUserDetailsMasterDto } from './dto/update-user_details_master.dto
 import { InjectRepository } from '@nestjs/typeorm';
 import { UserDetailsMaster } from './entities/user_details_master.entity';
 import { Repository } from 'typeorm';
+import { UserAuthMasterService } from 'src/user_auth_master/user_auth_master.service';
+import { CreateUserAuthMasterDto } from 'src/user_auth_master/dto/create-user_auth_master.dto';
 
 @Injectable()
 export class UserDetailsMasterService {
@@ -12,7 +14,8 @@ export class UserDetailsMasterService {
 
   constructor(
     @InjectRepository(UserDetailsMaster)
-    private readonly userDetailRepository:Repository<UserDetailsMaster>
+    private readonly userDetailRepository:Repository<UserDetailsMaster>,
+    private readonly userAuthService:UserAuthMasterService
   ){}
 
   async findAll(): Promise<UserDetailsMaster[]> {
@@ -41,8 +44,15 @@ export class UserDetailsMasterService {
 
   async create(createUserDetailsMasterDto: CreateUserDetailsMasterDto): Promise<UserDetailsMaster> {
     try {
+      const user = await this.userDetailRepository.save(createUserDetailsMasterDto);
+      const authUser : CreateUserAuthMasterDto = {
+        "id": user.id,
+        "userPassword": createUserDetailsMasterDto.userPassword,
+        "userChangePassword": createUserDetailsMasterDto.userChangePassword,
+      }
+      this.userAuthService.create(authUser);
       this.logger.log('CREATED A NEW USER_DETAILS');
-      return this.userDetailRepository.save(createUserDetailsMasterDto);
+      return user;
     } catch (error) {
       this.logger.error(`Error occurred while creating user details: ${error.message}`);
       throw new InternalServerErrorException('Could not create user details');

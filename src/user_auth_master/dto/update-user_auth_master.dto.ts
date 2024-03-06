@@ -11,10 +11,4 @@ export class UpdateUserAuthMasterDto extends PartialType(CreateUserAuthMasterDto
     @IsNotEmpty()
     @IsNumber()
     readonly user_changepass?: number;
-
-    // readonly userDetails?: number;
-
-    readonly crtdate?: Date;
-    
-    readonly upddate?: Date;
 }

@@ -44,18 +44,18 @@ export class UserAuthMasterService {
 
   async create(createUserAuthMasterDto: CreateUserAuthMasterDto): Promise<UserAuthMaster> {
     try {
-      this.logger.log('CREATED A NEW USER_AUTH');
-
-      const hashPassword = await bcrypt.hash(createUserAuthMasterDto.user_password, this.saltOrRounds);
+      const hashPassword = await bcrypt.hash(createUserAuthMasterDto.userPassword, this.saltOrRounds);
       const newUserAuthData = {
         ...createUserAuthMasterDto,
         userPassword: hashPassword,
       };
-      return this.userAuthRepository.save(newUserAuthData);
+      const detail = await this.userAuthRepository.save(newUserAuthData);
+      this.logger.log('CREATED A NEW USER_AUTH');
+      return detail;
     }
     catch (error) {
       this.logger.error(`Error occurred while creating user auth: ${error.message}`);
-      throw new InternalServerErrorException('Could not create user auth');
+      throw new InternalServerErrorException();
     }
   }
 

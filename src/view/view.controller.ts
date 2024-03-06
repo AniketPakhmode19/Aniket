@@ -2,6 +2,7 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, UseInterceptors } fr
 import { ViewService } from './view.service';
 import { DetailsInterceptor } from 'src/interceptor/details.interceptor';
 
+
 @Controller('view')
 export class ViewController {
   constructor(private readonly viewService: ViewService) {}
