@@ -13,7 +13,7 @@ export class ViewController {
   }
 
   @Get(':id')
-  // @UseInterceptors(DetailsInterceptor)
+  @UseInterceptors(DetailsInterceptor)
   findOne(@Param('id') id: number) {
     return this.viewService.findOne(+id);
   }
